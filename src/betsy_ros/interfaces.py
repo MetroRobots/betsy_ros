@@ -67,7 +67,8 @@ def list_interfaces(ros_version=None, interface_types=None):
                     if not interface_path.exists():
                         continue
                     for i_name in _list_types(str(interface_path),
-                                              f'{interface_type}.{interface_type}'):
+                                              interface_type,
+                                              '.' + interface_type):
                         yield ROSInterface(pkg, interface_type, i_name)
     else:
         from rosidl_runtime_py import get_interfaces
