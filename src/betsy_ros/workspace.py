@@ -1,6 +1,5 @@
 import os
 import pathlib
-import re
 from enum import Enum
 
 
@@ -8,9 +7,6 @@ class BuildType(Enum):
     CATKIN_MAKE = 1
     CATKIN_TOOLS = 2
     COLCON = 3
-
-
-PACKAGE_NAME = re.compile(r'<name>(.*)</name>')
 
 
 def _get_parent_dirs(cur_dir):
@@ -50,26 +46,6 @@ def get_workspace_root(cur_dir=pathlib.Path('.')):
             highest_candidate = folder
 
     return None, highest_candidate
-
-
-def get_package_name(folder):
-    """If this folder is the root of a package, return the name of the package."""
-    filename = folder / 'package.xml'
-    if filename.exists():
-        s = open(filename).read()
-        m = PACKAGE_NAME.search(s)
-        if m:
-            return m.group(1)
-        else:
-            return folder.stem
-
-
-def get_current_package_name(cur_dir=pathlib.Path('.')):
-    """Return the name of the current package if currently within a (sub)folder of a package."""
-    for folder in _get_parent_dirs(cur_dir):
-        pkg_name = get_package_name(folder)
-        if pkg_name:
-            return pkg_name
 
 
 def get_ros_version(fail_quietly=False):
