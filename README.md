@@ -5,6 +5,12 @@ In this time of revolution between the regimes of ROS 1 and ROS 2, Betsy ROS cre
 
 Translation: This package is a unified Python API for certain "meta" ROS API calls that work the same in ROS 1 and ROS 2.
 
+## Installation
+
+[![PyPI version](https://badge.fury.io/py/betsy-ros.svg)](https://badge.fury.io/py/betsy-ros)
+
+    sudo pip3 install betsy-ros
+
 ## Functionality
 ### Workspace
  * `get_workspace_root` returns a `BuildType` and `pathlib.Path` indicating the type and location of the current workspace.
