@@ -32,6 +32,13 @@ Translation: This package is a unified Python API for certain "meta" ROS API cal
   * name
  * `list_interfaces` yields `ROSInterface` instances for all messages/services/actions in the environment.
 
+### Environment
+(i.e. active topics, service providers and action servers)
+
+ * `get_topics`, `get_services`, and `get_actions` return the names of all active ROS resources
+   * By default, it just returns the names.
+   * If `include_types` is set to `True`, the type will also be included as a `ROSInterface`.
+
 ## Credit
 Package logo from artwork by Jean Leon Gerome Ferris (1863–1930):
 [Betsy Ross 1777](https://commons.wikimedia.org/wiki/File:Betsy_Ross_1777_cph.3g09905.jpg)
